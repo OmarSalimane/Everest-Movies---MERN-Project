@@ -1,0 +1,313 @@
+/* SceneRecognition.css */
+.scene-recognition-container {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 1000;
+    font-family: Arial, sans-serif;
+  }
+  
+  .scene-recognition-toggle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #581cb8; /* Purple for distinction from chatbot */
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+  }
+  
+  .scene-recognition-toggle:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  }
+  
+  .scene-recognition-window {
+    position: absolute;
+    bottom: 80px;
+    left: 0;
+    width: 600px;
+    max-width: 90vw;
+    height: 600px;
+    max-height: 80vh;
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.3s ease-out;
+  }
+  
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .scene-recognition-header {
+    padding: 15px;
+    background-color: #581cb8;
+    color: white;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .scene-recognition-header h3 {
+    margin: 0;
+    font-size: 18px;
+    flex-grow: 1;
+  }
+  
+  .close-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0 5px;
+  }
+  
+  .scene-recognition-content {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+  }
+  
+  .upload-area {
+    width: 100%;
+    height: 250px;
+    border: 2px dashed #444;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  
+  .upload-area:hover {
+    border-color: #581cb8;
+  }
+  
+  .upload-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #ccc;
+  }
+  
+  .upload-placeholder svg {
+    margin-bottom: 10px;
+    color: #666;
+  }
+  
+  .upload-placeholder p {
+    margin: 5px 0;
+    font-size: 16px;
+  }
+  
+  .upload-placeholder span {
+    font-size: 14px;
+    color: #888;
+  }
+  
+  .file-input {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  .image-preview {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+  
+  .error-message {
+    color: #e74c3c;
+    margin-top: 10px;
+    text-align: center;
+  }
+  
+  .recognize-button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    background-color: #581cb8;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .recognize-button:hover:not(:disabled) {
+    background-color: #6c25d9;
+  }
+  
+  .recognize-button:disabled {
+    background-color: #444;
+    cursor: not-allowed;
+  }
+  
+  .loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+  }
+  
+  .loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(88, 28, 184, 0.3);
+    border-radius: 50%;
+    border-top-color: #581cb8;
+    animation: spin 1s ease-in-out infinite;
+    margin-bottom: 20px;
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .result-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .result-image {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    max-height: 200px;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+  
+  .result-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+  
+  .result-details {
+    color: white;
+  }
+  
+  .result-details h4 {
+    font-size: 22px;
+    margin: 0 0 15px 0;
+    color: white;
+  }
+  
+  .result-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 15px;
+  }
+  
+  .result-info p {
+    margin: 0;
+    font-size: 14px;
+  }
+  
+  .scene-description {
+    margin: 15px 0;
+    line-height: 1.6;
+  }
+  
+  .actor-list {
+    margin: 15px 0;
+  }
+  
+  .actor-list h5 {
+    margin: 0 0 10px 0;
+    font-size: 16px;
+  }
+  
+  .actor-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .actor-list li {
+    background-color: #333;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 14px;
+  }
+  
+  .action-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  .action-button {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  .action-button.watch {
+    background-color: #e50914;
+    color: white;
+  }
+  
+  .action-button.watch:hover {
+    background-color: #f40612;
+  }
+  
+  .action-button.retry {
+    background-color: #333;
+    color: white;
+  }
+  
+  .action-button.retry:hover {
+    background-color: #444;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 640px) {
+    .scene-recognition-window {
+      width: 90vw;
+      height: 80vh;
+    }
+    
+    .result-info {
+      grid-template-columns: 1fr;
+    }
+  }
